@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tracking;
+use App\Models\Rw;
 use Illuminate\Http\Request;
 
 class TrackingController extends Controller
@@ -14,7 +15,9 @@ class TrackingController extends Controller
      */
     public function index()
     {
-        //
+        $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
+        return view('adminnice.tracking.index',compact('tracking'));
+        
     }
 
     /**
@@ -24,7 +27,7 @@ class TrackingController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminnice.tracking.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tracking = new Tracking;
+        $tracking -> id_rw = $request->id_rw;
+        $tracking -> positif = $request->positif;
+        $tracking -> sembuh = $request->sembuh;
+        $tracking -> meninggal = $request->meninggal;
+        $tracking -> tgl = $request->tgl;
+        $tracking ->save();
+        return redirect()->route('tracking.index');
     }
 
     /**

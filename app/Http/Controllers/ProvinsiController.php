@@ -14,7 +14,8 @@ class ProvinsiController extends Controller
      */
     public function index()
     {
-        //
+        $provinsi = Provinsi::latest()->simplePaginate(4);
+        return view('adminnice.provinsi.index',compact('provinsi'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminnice.provinsi.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $provinsi = new Provinsi;
+        $provinsi -> kode_prov = $request->kode_prov;
+        $provinsi -> nama_prov = $request->nama_prov;
+        $provinsi ->save();
+        return redirect()->route('provinsi.index');
     }
 
     /**
@@ -55,10 +60,11 @@ class ProvinsiController extends Controller
      * @param  \App\Models\Provinsi  $provinsi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provinsi $provinsi)
+    public function edit($id)
     {
-        //
-    }
+        $provinsi = Provinsi::findOrFail($id);
+        return view('adminnice.provinsi.edit',compact('provinsi'));
+    }   
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +73,13 @@ class ProvinsiController extends Controller
      * @param  \App\Models\Provinsi  $provinsi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provinsi $provinsi)
+    public function update(Request $request,  $id)
     {
-        //
+        $provinsi = Provinsi::findOrFail($id);
+        $provinsi -> kode_prov = $request->kode_prov;
+        $provinsi -> nama_prov = $request->nama_prov;
+        $provinsi ->save();
+        return redirect()->route('provinsi.index');
     }
 
     /**
@@ -80,6 +90,7 @@ class ProvinsiController extends Controller
      */
     public function destroy(Provinsi $provinsi)
     {
-        //
+        $provinsi->delete();
+        return redirect()->route('provinsi.index');
     }
 }

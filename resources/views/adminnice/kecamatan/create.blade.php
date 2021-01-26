@@ -7,16 +7,19 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Starter Kit</h4>
+                        <h4 class="page-title">Tambah Kecamatan</h4>
                     </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex align-items-center justify-content-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#">starter-kit</a>
+                                        <a href="{{url('admin')}}">home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{url('admin/kecamatan')}}">kecamatan</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Create</li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +39,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                This is some text within a card block.
+                            <form action="{{route('kecamatan.store')}}" class="form-horizontal m-t-30" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label>Nama Kecamatan</label>
+                                <input type="text" class="form-control" name="nama_kec" required>
+                            </div>
+                            <div class="form-group">
+                                    <label>Input Select</label>
+                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_kot">
+                                        <option selected>pilih...</option>
+                                        @foreach($kota as $data)
+                                        <option value="{{$data->id}}">{{$data->nama_kot}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-info">Tambah</button>
+                            </div>
+                            </form>
                             </div>
                         </div>
                     </div>

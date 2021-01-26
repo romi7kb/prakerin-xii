@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kota;
+use App\Models\Provinsi;
+
 use Illuminate\Http\Request;
 
 class KotaController extends Controller
@@ -14,7 +16,9 @@ class KotaController extends Controller
      */
     public function index()
     {
-        //
+        $kota = Kota::with('Provinsi')->get();
+        
+        return view('adminnice.kota.index',compact('kota'));
     }
 
     /**
@@ -24,7 +28,8 @@ class KotaController extends Controller
      */
     public function create()
     {
-        //
+        $provinsi = Provinsi::all();
+        return view('adminnice.kota.create',compact('provinsi'));
     }
 
     /**
@@ -35,7 +40,12 @@ class KotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kota = new Kota;
+        $kota -> id_prov = $request->id_prov;
+        $kota -> kode_kot = $request->kode_kot;
+        $kota -> nama_kot = $request->nama_kot;
+        $kota ->save();
+        return redirect()->route('kota.index');
     }
 
     /**
@@ -55,9 +65,11 @@ class KotaController extends Controller
      * @param  \App\Models\Kota  $kota
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kota $kota)
+    public function edit($id)
     {
-        //
+        $kota = Kota::findOrFail($id);
+        $provinsi = Provinsi::all();
+        return view('adminnice.kota.edit',compact('kota','provinsi'));
     }
 
     /**
@@ -67,9 +79,14 @@ class KotaController extends Controller
      * @param  \App\Models\Kota  $kota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kota $kota)
+    public function update(Request $request, $id)
     {
-        //
+        $kota = Kota::findOrFail($id);
+        $kota -> id_prov = $request->id_prov;
+        $kota -> kode_kot = $request->kode_kot;
+        $kota -> nama_kot = $request->nama_kot;
+        $kota ->save();
+        return redirect()->route('kota.index');
     }
 
     /**
@@ -78,8 +95,10 @@ class KotaController extends Controller
      * @param  \App\Models\Kota  $kota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kota $kota)
+    public function destroy($id)
     {
-        //
+        $kota = Kota::findOrFail($id);
+        $kota->delete();
+        return redirect()->route('kota.index');
     }
 }

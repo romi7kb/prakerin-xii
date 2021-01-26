@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelurahan;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class KelurahanController extends Controller
@@ -14,7 +15,9 @@ class KelurahanController extends Controller
      */
     public function index()
     {
-        //
+        $kelurahan = kelurahan::with('Kecamatan')->get();
+        return view('adminnice.kelurahan.index',compact('kelurahan'));
+        
     }
 
     /**
@@ -24,7 +27,8 @@ class KelurahanController extends Controller
      */
     public function create()
     {
-        //
+        $kecamatan = Kecamatan::all();
+        return view('adminnice.kelurahan.create',compact('kecamatan'));
     }
 
     /**
@@ -35,7 +39,11 @@ class KelurahanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kelurahan = new Kelurahan;
+        $kelurahan -> id_kec = $request->id_kec;
+        $kelurahan -> nama_kel = $request->nama_kel;
+        $kelurahan ->save();
+        return redirect()->route('kelurahan.index');
     }
 
     /**
@@ -44,7 +52,7 @@ class KelurahanController extends Controller
      * @param  \App\Models\Kelurahan  $kelurahan
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelurahan $kelurahan)
+    public function show( $id)
     {
         //
     }
@@ -55,9 +63,11 @@ class KelurahanController extends Controller
      * @param  \App\Models\Kelurahan  $kelurahan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelurahan $kelurahan)
+    public function edit( $id)
     {
-        //
+        $kelurahan = Kelurahan::findOrFail($id);
+        $kecamatan = kecamatan::all();
+        return view('adminnice.kelurahan.edit',compact('kelurahan','kecamatan'));
     }
 
     /**
@@ -67,9 +77,13 @@ class KelurahanController extends Controller
      * @param  \App\Models\Kelurahan  $kelurahan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelurahan $kelurahan)
+    public function update(Request $request,  $id)
     {
-        //
+        $kelurahan = kelurahan::findOrFail($id);
+        $kelurahan -> id_kec = $request->id_kec;
+        $kelurahan -> nama_kel = $request->nama_kel;
+        $kelurahan ->save();
+        return redirect()->route('kelurahan.index');
     }
 
     /**
@@ -78,8 +92,10 @@ class KelurahanController extends Controller
      * @param  \App\Models\Kelurahan  $kelurahan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelurahan $kelurahan)
+    public function destroy( $id)
     {
-        //
+        $kelurahan = Kelurahan::findOrFail($id);
+        $kelurahan->delete();
+        return redirect()->route('kelurahan.index');
     }
 }

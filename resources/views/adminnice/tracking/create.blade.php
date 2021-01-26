@@ -4,19 +4,22 @@
 @section('js')
 @endsection
 @section('active')
-            <div class="page-breadcrumb">
+<div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Starter Kit</h4>
+                        <h4 class="page-title">Tambah Data Tracking</h4>
                     </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex align-items-center justify-content-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#">starter-kit</a>
+                                        <a href="{{url('admin')}}">home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{url('admin/tracking')}}">tracking</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Create</li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +39,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                This is some text within a card block.
+                            <form action="{{route('tracking.store')}}" class="form-horizontal m-t-30" method="post">
+                            @csrf
+                            @livewire('tracking-data')
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-info">Tambah</button>
+                            </div>
+                            </form>
                             </div>
                         </div>
                     </div>

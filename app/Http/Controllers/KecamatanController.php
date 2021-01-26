@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 
 class KecamatanController extends Controller
@@ -14,7 +15,9 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        //
+        $kecamatan = Kecamatan::with('Kota')->get();
+        return view('adminnice.kecamatan.index',compact('kecamatan'));
+        
     }
 
     /**
@@ -24,7 +27,8 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        //
+        $kota = Kota::all();
+        return view('adminnice.kecamatan.create',compact('kota'));
     }
 
     /**
@@ -35,7 +39,11 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kecamatan = new Kecamatan;
+        $kecamatan -> id_kot = $request->id_kot;
+        $kecamatan -> nama_kec = $request->nama_kec;
+        $kecamatan ->save();
+        return redirect()->route('kecamatan.index');
     }
 
     /**
@@ -55,9 +63,11 @@ class KecamatanController extends Controller
      * @param  \App\Models\Kecamatan  $kecamatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kecamatan $kecamatan)
+    public function edit( $id)
     {
-        //
+        $kecamatan = Kecamatan::findOrFail($id);
+        $kota = Kota::all();
+        return view('adminnice.kecamatan.edit',compact('kecamatan','kota'));
     }
 
     /**
@@ -67,9 +77,13 @@ class KecamatanController extends Controller
      * @param  \App\Models\Kecamatan  $kecamatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kecamatan $kecamatan)
+    public function update(Request $request,  $id)
     {
-        //
+        $kecamatan = Kecamatan::findOrFail($id);
+        $kecamatan -> id_kot = $request->id_kot;
+        $kecamatan -> nama_kec = $request->nama_kec;
+        $kecamatan ->save();
+        return redirect()->route('kecamatan.index');
     }
 
     /**
@@ -78,8 +92,10 @@ class KecamatanController extends Controller
      * @param  \App\Models\Kecamatan  $kecamatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kecamatan $kecamatan)
+    public function destroy( $id)
     {
-        //
+        $kecamatan = Kecamatan::findOrFail($id);
+        $kecamatan->delete();
+        return redirect()->route('kecamatan.index');
     }
 }

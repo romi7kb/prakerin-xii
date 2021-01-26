@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rw;
+use App\Models\Kelurahan;
 use Illuminate\Http\Request;
 
 class RwController extends Controller
@@ -14,7 +15,9 @@ class RwController extends Controller
      */
     public function index()
     {
-        //
+        $rw = rw::with('Kelurahan')->get();
+        return view('adminnice.rw.index',compact('rw'));
+        
     }
 
     /**
@@ -24,7 +27,8 @@ class RwController extends Controller
      */
     public function create()
     {
-        //
+        $kelurahan = kelurahan::all();
+        return view('adminnice.rw.create',compact('kelurahan'));
     }
 
     /**
@@ -35,7 +39,11 @@ class RwController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rw = new Rw;
+        $rw -> id_kel = $request->id_kel;
+        $rw -> no_rw = $request->no_rw;
+        $rw ->save();
+        return redirect()->route('rw.index');
     }
 
     /**
@@ -55,9 +63,11 @@ class RwController extends Controller
      * @param  \App\Models\Rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rw $rw)
+    public function edit( $id)
     {
-        //
+        $rw = rw::findOrFail($id);
+        $kelurahan = kelurahan::all();
+        return view('adminnice.rw.edit',compact('rw','kelurahan'));
     }
 
     /**
@@ -67,9 +77,13 @@ class RwController extends Controller
      * @param  \App\Models\Rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rw $rw)
+    public function update(Request $request, $id)
     {
-        //
+        $rw = rw::findOrFail($id);
+        $rw -> id_kel = $request->id_kel;
+        $rw -> no_rw = $request->no_rw;
+        $rw ->save();
+        return redirect()->route('rw.index');
     }
 
     /**
@@ -78,8 +92,10 @@ class RwController extends Controller
      * @param  \App\Models\Rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rw $rw)
+    public function destroy( $id)
     {
-        //
+        $rw = Rw::findOrFail($id);
+        $rw->delete();
+        return redirect()->route('rw.index');
     }
 }
