@@ -7,16 +7,16 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Starter Kit</h4>
+                        <h4 class="page-title">Tracking Covid</h4>
                     </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex align-items-center justify-content-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#">starter-kit</a>
+                                        <a href="{{url('admin')}}">home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Tracking</li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-body">
-                                <h4 class="card-title">Tacking Covid <a class="btn btn-primary btn-sm btn-rounded" href="{{route('tracking.create')}}"><i class="mdi mdi-plus"></i></a></h4>
+                                <h4 class="card-title">Kasus <a class="btn btn-primary btn-sm btn-rounded" href="{{route('tracking.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
                             </div>
                             <div class="table-responsive">

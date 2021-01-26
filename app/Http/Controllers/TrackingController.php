@@ -65,9 +65,10 @@ class TrackingController extends Controller
      * @param  \App\Models\Tracking  $tracking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tracking $tracking)
+    public function edit( $id)
     {
-        //
+        $tracking = Tracking::findOrFail($id);
+        return view('adminnice.tracking.edit',compact('tracking'));
     }
 
     /**
@@ -77,9 +78,16 @@ class TrackingController extends Controller
      * @param  \App\Models\Tracking  $tracking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tracking $tracking)
+    public function update(Request $request,  $id)
     {
-        //
+        $tracking = Tracking::findOrFail($id);
+        $tracking -> id_rw = $request->id_rw;
+        $tracking -> positif = $request->positif;
+        $tracking -> sembuh = $request->sembuh;
+        $tracking -> meninggal = $request->meninggal;
+        $tracking -> tgl = $request->tgl;
+        $tracking ->save();
+        return redirect()->route('tracking.index');
     }
 
     /**
@@ -88,8 +96,10 @@ class TrackingController extends Controller
      * @param  \App\Models\Tracking  $tracking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tracking $tracking)
+    public function destroy( $id)
     {
-        //
+        $tracking = Tracking::findOrFail($id);
+        $tracking->delete();
+        return redirect()->route('tracking.index');
     }
 }
