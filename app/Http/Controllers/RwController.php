@@ -13,6 +13,11 @@ class RwController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $messeges = [
+        'no_rw.required'=>'no rw tidak boleh kosong',
+        'no_rw.max'=>'no rw masimal 2 karakter',
+        'id_kel.required'=>'pilih kelurahan terlebih dahulu',
+    ];
     public function index()
     {
         $rw = rw::with('Kelurahan')->get();
@@ -39,6 +44,12 @@ class RwController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'no_rw' => 'required|max:2',
+            'id_kel' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $rw = new Rw;
         $rw -> id_kel = $request->id_kel;
         $rw -> no_rw = $request->no_rw;
@@ -79,6 +90,12 @@ class RwController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'no_rw' => 'required|max:2',
+            'id_kel' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $rw = rw::findOrFail($id);
         $rw -> id_kel = $request->id_kel;
         $rw -> no_rw = $request->no_rw;

@@ -44,11 +44,17 @@
                             @method('put')
                             <div class="form-group">
                                 <label>Kode Provinsi</label>
-                                <input type="text" class="form-control" name="kode_prov" value="{{$provinsi->kode_prov}}" required>
+                                <input type="text" class="form-control @error('kode_prov') is-invalid @enderror" name="kode_prov" value="{{$provinsi->kode_prov}}" >
+                                @error('kode_prov')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Nama Provinsi</label>
-                                <input type="text" class="form-control" name="nama_prov" value="{{$provinsi->nama_prov}}" required>
+                                <input type="text" class="form-control @error('nama_prov') is-invalid @enderror" name="nama_prov" value="{{$provinsi->nama_prov}}" >
+                                @error('nama_prov')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Edit</button>

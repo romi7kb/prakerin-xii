@@ -29,11 +29,18 @@ class TrackingData extends Component
     public function mount($selectedRw = null, $idt = null)
     {
         $this->provinsi = Provinsi::all();
-                
+        $this->kota = collect();
+        $this->kecamatan = collect();
+        $this->kelurahan = collect();
+        $this->rw = collect();
         $this->selectedRw = $selectedRw;
         $this->idt = $idt;
         if (!is_null($idt)) {
             $this->tracking1 = Tracking::findOrFail($idt);
+        }
+        if (!is_null(old('id_rw'))) {
+            $this->selectedRw = old('id_rw');
+
         }
 
         if (!is_null($selectedRw)) {
@@ -64,6 +71,9 @@ class TrackingData extends Component
         $this->selectedKecamatan = NULL;
         $this->selectedKelurahan = NULL;
         $this->selectedRw = NULL;
+        $this->kecamatan = [];
+        $this->kelurahan = [];
+        $this->rw = [];
     }
     public function updatedSelectedKota($kota)
     {
@@ -71,6 +81,8 @@ class TrackingData extends Component
         $this->selectedKecamatan = NULL;
         $this->selectedKelurahan = NULL;
         $this->selectedRw = NULL;
+        $this->kelurahan = [];
+        $this->rw = [];
     }
 
     public function updatedSelectedKecamatan($kecamatan)
@@ -78,6 +90,7 @@ class TrackingData extends Component
         $this->kelurahan = Kelurahan::where('id_kec', $kecamatan)->get();
         $this->selectedKelurahan = NULL;
         $this->selectedRw = NULL;
+        $this->rw = [];
     }
     public function updatedSelectedKelurahan($kelurahan)
     {
@@ -85,6 +98,7 @@ class TrackingData extends Component
             $this->rw = RW::where('id_kel', $kelurahan)->get();
         }else{
             $this->selectedRw = NULL;
+
         }
     }
 }

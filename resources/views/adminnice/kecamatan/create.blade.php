@@ -42,17 +42,34 @@
                             <form action="{{route('kecamatan.store')}}" class="form-horizontal m-t-30" method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Nama Kecamatan</label>
-                                <input type="text" class="form-control" name="nama_kec" required>
+                                <label>Id Kecamatan</label>
+                                <input type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{old('id')}}">
+                                @error('id')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_kot">
-                                        <option selected>pilih...</option>
+                                <label>Nama Kecamatan</label>
+                                <input type="text" class="form-control @error('nama_kec') is-invalid @enderror" name="nama_kec" value="{{old('nama_kec')}}">
+                                @error('nama_kec')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label>Kota</label>
+                                    <select class="custom-select col-12 select2 @error('id_kot') is-invalid @enderror" id="inlineFormCustomSelect" name="id_kot">
+                                        <option value="">pilih...</option>
                                         @foreach($kota as $data)
-                                        <option value="{{$data->id}}">{{$data->nama_kot}}</option>
+                                        <option 
+                                        @if(old('id_kot')==$data->id))
+                                        selected
+                                        @endif
+                                        value="{{$data->id}}">{{$data->nama_kot}}</option>
                                         @endforeach
                                     </select>
+                                    @error('id_kot')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Tambah</button>

@@ -47,8 +47,8 @@
                                 <input type="text" class="form-control" name="no_rw" value="{{$rw->no_rw}}" required>
                             </div>
                             <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_kel">
+                                    <label>Kelurahan</label>
+                                    <select class="custom-select col-12 select2" id="inlineFormCustomSelect" name="id_kel">
                                     <option selected>pilih...</option>
                                         @foreach($kelurahan as $data)
                                         <option 

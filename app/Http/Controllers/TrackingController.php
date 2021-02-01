@@ -13,6 +13,15 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $messeges = [
+        'id_rw.required'=>'rw tidak boleh kosong',
+        'id_rw.max'=>'rw tidak boleh lebih dari 2 karakter',
+        'id_rw.unique'=>'data di rw ini sudah ada',
+        'positif.required'=>'jumlah positif tidak boleh kosong',
+        'sembuh.required'=>'jumlah sembuh tidak boleh kosong',
+        'meninggal.required'=>'jumlah meninggal tidak boleh kosong',
+        'tgl.required'=>'jumlah tanggal tidak boleh kosong',
+    ];
     public function index()
     {
         $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
@@ -38,6 +47,15 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'id_rw' => 'required|unique:trackings|max:2',
+            'positif'=>'required',
+            'sembuh'=>'required',
+            'meninggal'=>'required',
+            'tgl'=>'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $tracking = new Tracking;
         $tracking -> id_rw = $request->id_rw;
         $tracking -> positif = $request->positif;
@@ -80,6 +98,15 @@ class TrackingController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $rules = [
+            'id_rw' => 'required|max:2',
+            'positif'=>'required',
+            'sembuh'=>'required',
+            'meninggal'=>'required',
+            'tgl'=>'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $tracking = Tracking::findOrFail($id);
         $tracking -> id_rw = $request->id_rw;
         $tracking -> positif = $request->positif;

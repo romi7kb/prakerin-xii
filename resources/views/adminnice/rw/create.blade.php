@@ -43,16 +43,26 @@
                             @csrf
                             <div class="form-group">
                                 <label>No RW</label>
-                                <input type="text" class="form-control" name="no_rw" required>
+                                <input type="text" class="form-control @error('no_rw') is-invalid @enderror" name="no_rw" value="{{old('no_rw')}}">
+                                @error('no_rw')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_kel">
-                                        <option selected>pilih...</option>
+                                    <label>Kelurahan</label>
+                                    <select class="custom-select col-12 select2 @error('id_kel') is-invalid @enderror" id="inlineFormCustomSelect" name="id_kel">
+                                        <option value="">pilih...</option>
                                         @foreach($kelurahan as $data)
-                                        <option value="{{$data->id}}">{{$data->nama_kel}}</option>
+                                        <option 
+                                        @if(old('id_kel')==$data->id))
+                                        selected 
+                                        @endif
+                                        value="{{$data->id}}">{{$data->nama_kel}}</option>
                                         @endforeach
                                     </select>
+                                    @error('id_kel')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Tambah</button>

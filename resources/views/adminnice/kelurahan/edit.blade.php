@@ -43,13 +43,23 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label>Nama kelurahan</label>
-                                <input type="text" class="form-control" name="nama_kel" value="{{$kelurahan->nama_kel}}" required>
+                                <label>Id kelurahan</label>
+                                <input type="text" class="form-control  @error('id') is-invalid @enderror" name="id" value="{{$kelurahan->id}}" >
+                                @error('id')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_kec">
-                                    <option selected>pilih...</option>
+                                <label>Nama kelurahan</label>
+                                <input type="text" class="form-control  @error('nama_kel') is-invalid @enderror" name="nama_kel" value="{{$kelurahan->nama_kel}}" >
+                                @error('nama_kel')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label>Kecamatan</label>
+                                    <select class="custom-select col-12 select2  @error('id_kec') is-invalid @enderror" id="inlineFormCustomSelect" name="id_kec">
+                                    <option value="">pilih...</option>
                                         @foreach($kecamatan as $data)
                                         <option 
                                         @if($kelurahan->id_kec==$data->id)
@@ -58,6 +68,9 @@
                                         value="{{$data->id}}">{{$data->nama_kec}}</option>
                                         @endforeach
                                     </select>
+                                    @error('id_kec')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Edit</button>

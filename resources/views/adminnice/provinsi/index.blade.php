@@ -2,6 +2,7 @@
 @section('css')
 @endsection
 @section('js')
+
 @endsection
 @section('active')
             <div class="page-breadcrumb">
@@ -37,10 +38,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Daftar Provinsi <a class="btn btn-primary btn-sm btn-rounded" href="{{route('provinsi.create')}}"><i class="mdi mdi-plus"></i></a></h4>
-                                
-                            </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered " id="tabled">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -70,7 +69,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                {{ $provinsi->links() }}
+                                
                             </div>
                         </div>
                     </div>

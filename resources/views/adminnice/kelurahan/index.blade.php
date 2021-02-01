@@ -26,10 +26,12 @@
             </div>
 @endsection
 @section('content')
+            
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+            
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
@@ -39,9 +41,8 @@
                         <div class="card-body">
                                 <h4 class="card-title">Daftar Kelurahan <a class="btn btn-primary btn-sm btn-rounded" href="{{route('kelurahan.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
-                            </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tabled">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>

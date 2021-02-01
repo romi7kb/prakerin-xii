@@ -14,10 +14,15 @@ class CreateKecamatansTable extends Migration
     public function up()
     {
         Schema::create('kecamatans', function (Blueprint $table) {
-            $table->id();     
-            $table->foreignId('id_kot')->constrained('kotas')->onUpdate('cascade')->onDelete('cascade');
+            $table->char('id',7);    
+            $table->primary('id');
+            $table->char('id_kot');
             $table->string('nama_kec', 30);
             $table->timestamps();
+            $table->foreign('id_kot')
+                ->references('id')
+                ->on('kotas')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

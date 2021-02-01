@@ -13,6 +13,13 @@ class KecamatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $messeges = [
+        'nama_kec.required'=>'nama kecamatan tidak boleh kosong',
+        'id.required'=>'id kecamatan tidak boleh kosong',
+        'nama_kec.unique'=>'nama kecamatan sudah ada',
+        'id.unique'=>'id kecamatan sudah ada',
+        'id_kot.required'=>'pilih kota terlebih dahulu',
+    ];
     public function index()
     {
         $kecamatan = Kecamatan::with('Kota')->get();
@@ -39,8 +46,16 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'nama_kec' => 'required|unique:kecamatans',
+            'id' => 'required|unique:kecamatans',
+            'id_kot'=>'required'
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kecamatan = new Kecamatan;
         $kecamatan -> id_kot = $request->id_kot;
+        $kecamatan -> id = $request->id;
         $kecamatan -> nama_kec = $request->nama_kec;
         $kecamatan ->save();
         return redirect()->route('kecamatan.index');
@@ -79,9 +94,17 @@ class KecamatanController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $rules = [
+            'nama_kec' => 'required',
+            'id' => 'required',
+            'id_kot' => 'required'
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kecamatan = Kecamatan::findOrFail($id);
         $kecamatan -> id_kot = $request->id_kot;
         $kecamatan -> nama_kec = $request->nama_kec;
+        $kecamatan -> id = $request->id;
         $kecamatan ->save();
         return redirect()->route('kecamatan.index');
     }

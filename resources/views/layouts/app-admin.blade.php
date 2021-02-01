@@ -17,6 +17,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
     <!-- Custom CSS -->
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/libs/datatable/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/libs/select2/select2.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -110,9 +112,21 @@
     <!--This page JavaScript -->
     <!--chartis chart-->
     <script src="{{asset('assets/libs/chartist/dist/chartist.min.js')}}"></script>
+    <script src="{{asset('assets/libs/datatable/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/libs/select2/select2.min.js')}}"></script>
     <script src="{{asset('assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
     <script src="{{asset('dist/js/pages/dashboards/dashboard1.js')}}"></script>
     @yield('js')
+    <script type="text/javascript">
+    $(document).ready( function () {
+        $('#tabled').DataTable();
+    } );
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    </script>
     @livewireScripts
     
 </body>

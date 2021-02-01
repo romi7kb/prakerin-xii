@@ -14,6 +14,14 @@ class KotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $messeges = [
+        'kode_kot.required'=>'kode kota tidak boleh kosong',
+        'kode_kot.max'=>'kode provinsi tidak boleh lebih dari 4 karakter',
+        'nama_kot.required'=>'nama kota tidak boleh kosong',
+        'id_prov.required'=>'pilih provinsi terlebih dahulu',
+        'kode_kot.unique'=>'kode kota sudah ada',
+        'nama_kot.unique'=>'nama kota sudah ada',
+    ];
     public function index()
     {
         $kota = Kota::with('Provinsi')->get();
@@ -40,9 +48,17 @@ class KotaController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'kode_kot' => 'required|unique:kotas|max:4',
+            'nama_kot' => 'required|unique:kotas',
+            'id_prov' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kota = new Kota;
         $kota -> id_prov = $request->id_prov;
         $kota -> kode_kot = $request->kode_kot;
+        $kota -> id = $request->kode_kot;
         $kota -> nama_kot = $request->nama_kot;
         $kota ->save();
         return redirect()->route('kota.index');
@@ -81,6 +97,13 @@ class KotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'kode_kot' => 'required|max:4',
+            'nama_kot' => 'required',
+            'id_prov' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kota = Kota::findOrFail($id);
         $kota -> id_prov = $request->id_prov;
         $kota -> kode_kot = $request->kode_kot;

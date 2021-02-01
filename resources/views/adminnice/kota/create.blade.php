@@ -43,20 +43,33 @@
                             @csrf
                             <div class="form-group">
                                 <label>Kode kota</label>
-                                <input type="text" class="form-control" name="kode_kot" required>
+                                <input type="text" class="form-control @error('kode_kot') is-invalid @enderror" name="kode_kot" value="{{old('kode_kot')}}">
+                                @error('kode_kot')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Nama kota</label>
-                                <input type="text" class="form-control" name="nama_kot" required>
+                                <input type="text" class="form-control @error('nama_kot') is-invalid @enderror" name="nama_kot" value="{{old('nama_kot')}}">
+                                @error('nama_kot')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="custom-select col-12" id="inlineFormCustomSelect" name="id_prov">
-                                        <option selected>pilih...</option>
+                                    <label>Provinsi</label>
+                                    <select class="custom-select col-12 select2 @error('id_prov') is-invalid @enderror" id="inlineFormCustomSelect" name="id_prov">
+                                        <option value="" >pilih...</option>
                                         @foreach($provinsi as $data)
-                                        <option value="{{$data->id}}">{{$data->nama_prov}}</option>
+                                        <option 
+                                        @if(old('id_prov')==$data->id))
+                                        selected
+                                        @endif
+                                        value="{{$data->id}}">{{$data->nama_prov}}</option>
                                         @endforeach
                                     </select>
+                                    @error('id_prov')
+                                    <div class="alert alert-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Tambah</button>

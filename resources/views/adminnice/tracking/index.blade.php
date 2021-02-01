@@ -35,12 +35,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                        <div class="card-body">
+                            <div class="card-body">
                                 <h4 class="card-title">Kasus <a class="btn btn-primary btn-sm btn-rounded" href="{{route('tracking.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
-                            </div>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tabled">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>

@@ -13,6 +13,13 @@ class KelurahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $messeges = [
+        'nama_kel.required'=>'nama kelurahan tidak boleh kosong',
+        'id.required'=>'id kelurahan tidak boleh kosong',
+        'nama_kel.unique'=>'nama kelurahan sudah ada',
+        'id.unique'=>'id kelurahan sudah ada',
+        'id_kec.required'=>'pilih kecamatan terlebih dahulu',
+    ];
     public function index()
     {
         $kelurahan = kelurahan::with('Kecamatan')->get();
@@ -39,9 +46,17 @@ class KelurahanController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'nama_kel' => 'required|unique:kelurahans',
+            'id' => 'required|unique:kelurahans',
+            'id_kec' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kelurahan = new Kelurahan;
         $kelurahan -> id_kec = $request->id_kec;
         $kelurahan -> nama_kel = $request->nama_kel;
+        $kelurahan -> id = $request->id;
         $kelurahan ->save();
         return redirect()->route('kelurahan.index');
     }
@@ -79,9 +94,17 @@ class KelurahanController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $rules = [
+            'nama_kel' => 'required',
+            'id' => 'required',
+            'id_kec' => 'required',
+        ];
+       
+        $this->validate($request,$rules,$this->messeges);
         $kelurahan = kelurahan::findOrFail($id);
         $kelurahan -> id_kec = $request->id_kec;
         $kelurahan -> nama_kel = $request->nama_kel;
+        $kelurahan -> id = $request->id;
         $kelurahan ->save();
         return redirect()->route('kelurahan.index');
     }
