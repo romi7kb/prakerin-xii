@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\KelurahanController;
 use App\Http\Controllers\Api\RwController;
 use App\Http\Controllers\Api\TrackingController;
+use App\Http\Controllers\Api\ApiController;
 
 
 /*
@@ -28,11 +29,24 @@ use App\Http\Controllers\Api\TrackingController;
 Route::post('login', [UserController::class,'login']);
 Route::post('register', [UserController::class,'register']);
 // provinsi
-Route::get('provinsi',[ ProvinsiController::class,'index']);
-Route::post('provinsi/create',[ ProvinsiController::class,'store']);
-Route::get('provinsi/show/{id}',[ ProvinsiController::class,'show']);
-Route::put('provinsi/edit/{id}',[ ProvinsiController::class,'update']);
-Route::delete('provinsi/delete/{id}',[ ProvinsiController::class,'destroy']);
+Route::get('provinsi',[ ApiController::class,'provinsi']);
+Route::get('provinsi/{id}',[ ApiController::class,'getprovinsi']);
+Route::get('provinsi/{idp}/kota',[ ApiController::class,'kota']);
+Route::get('kota',[ ApiController::class,'allkota']);
+Route::get('provinsi/{idp}/kota/{id}',[ ApiController::class,'getkota']);
+Route::get('kecamatan',[ ApiController::class,'kecamatan']);
+Route::get('kelurahan',[ ApiController::class,'kelurahan']);
+Route::get('rw',[ ApiController::class,'rw']);
+Route::get('indonesia',[ ApiController::class,'indonesia']);
+Route::get('negara',[ ApiController::class,'negara']);
+Route::get('positif',[ ApiController::class,'positif']);
+Route::get('sembuh',[ ApiController::class,'sembuh']);
+Route::get('meninggal',[ ApiController::class,'meninggal']);
+// Route::get('provinsi',[ ProvinsiController::class,'index']);
+// Route::post('provinsi/create',[ ProvinsiController::class,'store']);
+// Route::get('provinsi/show/{id}',[ ProvinsiController::class,'show']);
+// Route::put('provinsi/edit/{id}',[ ProvinsiController::class,'update']);
+// Route::delete('provinsi/delete/{id}',[ ProvinsiController::class,'destroy']);
 
 Route::get('tracking',[ TrackingController::class,'tracking']);
 

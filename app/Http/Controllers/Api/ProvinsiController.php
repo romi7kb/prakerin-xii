@@ -20,8 +20,9 @@ class ProvinsiController extends Controller
         $data = Provinsi::all();
         $response= [
             'success' => true,
+            'messege' => 'Semua data Provinsi',
             'data' => $data,
-            'messge' => 'berhasil',
+            'message' => 'berhasil',
         ];
         return response()->json($response);
     }
@@ -74,7 +75,7 @@ class ProvinsiController extends Controller
             ], 404);
         }
     }
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
         $rules = [
             'id' => 'required|max:4',
@@ -90,7 +91,7 @@ class ProvinsiController extends Controller
             ],400);
         }else {
             $input = $request->all();
-            $provinsi = Provinsi::whereId($request->input('id'))->update($input);
+            $provinsi = Provinsi::whereId($id)->update($input);
             if ($provinsi) {
                 return response()->json([
                     'success' => true,
@@ -107,9 +108,10 @@ class ProvinsiController extends Controller
     }
     public function destroy($id)
     {
-        $provinsi = Provinsi::findOrFail($id);
-        $provinsi->delete();
+        $provinsi = Provinsi::whereId($id)->first();
+        
         if ($provinsi) {
+            $provinsi->delete();
             return response()->json([
                 'success' => true,
                 'message' => 'Provinsi Berhasil Dihapus!',
@@ -117,7 +119,7 @@ class ProvinsiController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Provinsi Gagal Dihapus!',
+                'message' => 'Provinsi Gagal Dihapus! Tidak ditemukan!',
             ], 500);
         }
 
