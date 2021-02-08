@@ -41,13 +41,7 @@
                             <div class="card-body">
                             <form action="{{route('kelurahan.store')}}" class="form-horizontal m-t-30" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label>Id Kelurahan</label>
-                                <input type="text" class="form-control  @error('id') is-invalid @enderror" name="id" value="{{old('id')}}">
-                                @error('id')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
+                            
                             <div class="form-group">
                                 <label>Nama Kelurahan</label>
                                 <input type="text" class="form-control  @error('nama_kel') is-invalid @enderror" name="nama_kel" value="{{old('nama_kel')}}">

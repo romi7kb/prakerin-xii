@@ -14,16 +14,10 @@ class CreateKelurahansTable extends Migration
     public function up()
     {
         Schema::create('kelurahans', function (Blueprint $table) {
-            $table->char('id',10);
-            $table->primary('id');
-            $table->char('id_kec');
-            $table->string('nama_kel', 30);
+            $table->id('id',100);
+            $table->foreignId('id_kec')->constrained('kecamatans')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama_kel');
             $table->timestamps();
-
-            $table->foreign('id_kec')
-                ->references('id')
-                ->on('kecamatans')
-                ->onUpdate('cascade')->onDelete('cascade');
         
         });
     }

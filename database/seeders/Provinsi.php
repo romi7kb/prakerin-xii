@@ -15,6 +15,7 @@ class Provinsi extends CsvSeeder
 	{
 		$this->table = 'provinsis';
 		$this->filename = base_path().'/database/seeders/csvs/provinsi.csv';
+        $this->timestams=true;
 	}
 
     public function run()

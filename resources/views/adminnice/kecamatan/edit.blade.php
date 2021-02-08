@@ -42,13 +42,7 @@
                             <form action="{{route('kecamatan.update', $kecamatan->id)}}" class="form-horizontal m-t-30" method="post">
                             @csrf
                             @method('put')
-                            <div class="form-group">
-                                <label>Id Kecamatan</label>
-                                <input type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{$kecamatan->id}}" >
-                                @error('id')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
+                            
                             <div class="form-group">
                                 <label>Nama Kecamatan</label>
                                 <input type="text" class="form-control @error('nama_kec') is-invalid @enderror" name="nama_kec" value="{{$kecamatan->nama_kec}}" >

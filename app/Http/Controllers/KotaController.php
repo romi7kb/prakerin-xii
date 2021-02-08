@@ -58,7 +58,6 @@ class KotaController extends Controller
         $kota = new Kota;
         $kota -> id_prov = $request->id_prov;
         $kota -> kode_kot = $request->kode_kot;
-        $kota -> id = $request->kode_kot;
         $kota -> nama_kot = $request->nama_kot;
         $kota ->save();
         return redirect()->route('kota.index');

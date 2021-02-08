@@ -16,6 +16,7 @@ class Kota extends CsvSeeder
 	{
 		$this->table = 'kotas';
 		$this->filename = base_path().'/database/seeders/csvs/kota.csv';
+        $this->timestams=true;
 	}
 
     public function run()

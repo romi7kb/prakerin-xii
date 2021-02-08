@@ -43,13 +43,6 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label>Id kelurahan</label>
-                                <input type="text" class="form-control  @error('id') is-invalid @enderror" name="id" value="{{$kelurahan->id}}" >
-                                @error('id')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label>Nama kelurahan</label>
                                 <input type="text" class="form-control  @error('nama_kel') is-invalid @enderror" name="nama_kel" value="{{$kelurahan->nama_kel}}" >
                                 @error('nama_kel')

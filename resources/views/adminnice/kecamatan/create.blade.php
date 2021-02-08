@@ -42,13 +42,6 @@
                             <form action="{{route('kecamatan.store')}}" class="form-horizontal m-t-30" method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Id Kecamatan</label>
-                                <input type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{old('id')}}">
-                                @error('id')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label>Nama Kecamatan</label>
                                 <input type="text" class="form-control @error('nama_kec') is-invalid @enderror" name="nama_kec" value="{{old('nama_kec')}}">
                                 @error('nama_kec')

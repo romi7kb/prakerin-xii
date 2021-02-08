@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+// use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Flynsarmy\CsvSeeder\CsvSeeder;
 class Kecamatan extends CsvSeeder
@@ -16,7 +16,7 @@ class Kecamatan extends CsvSeeder
 	{
         $this->table = 'kecamatans';
         $this->filename = base_path().'/database/seeders/csvs/kecamatan.csv';
-        $this->should_trim = true;
+        $this->timestams=true;
 	}
 
     public function run()

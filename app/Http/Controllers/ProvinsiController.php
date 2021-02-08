@@ -51,7 +51,6 @@ class ProvinsiController extends Controller
         $this->validate($request,$rules,$this->messeges);
         $provinsi = new Provinsi;
         $provinsi -> kode_prov = $request->kode_prov;
-        $provinsi -> id = $request->kode_prov;
         $provinsi -> nama_prov = $request->nama_prov;
         $provinsi ->save();
         return redirect()->route('provinsi.index');
@@ -97,7 +96,6 @@ class ProvinsiController extends Controller
         $this->validate($request,$rules,$this->messeges);
         $provinsi = Provinsi::findOrFail($id);
         $provinsi -> kode_prov = $request->kode_prov;
-        $provinsi -> id = $request->kode_prov;
         $provinsi -> nama_prov = $request->nama_prov;
         $provinsi ->save();
         return redirect()->route('provinsi.index');

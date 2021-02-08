@@ -48,7 +48,6 @@ class KelurahanController extends Controller
     {
         $rules = [
             'nama_kel' => 'required|unique:kelurahans',
-            'id' => 'required|unique:kelurahans',
             'id_kec' => 'required',
         ];
        
@@ -56,7 +55,6 @@ class KelurahanController extends Controller
         $kelurahan = new Kelurahan;
         $kelurahan -> id_kec = $request->id_kec;
         $kelurahan -> nama_kel = $request->nama_kel;
-        $kelurahan -> id = $request->id;
         $kelurahan ->save();
         return redirect()->route('kelurahan.index');
     }
@@ -96,7 +94,6 @@ class KelurahanController extends Controller
     {
         $rules = [
             'nama_kel' => 'required',
-            'id' => 'required',
             'id_kec' => 'required',
         ];
        
@@ -104,7 +101,6 @@ class KelurahanController extends Controller
         $kelurahan = kelurahan::findOrFail($id);
         $kelurahan -> id_kec = $request->id_kec;
         $kelurahan -> nama_kel = $request->nama_kel;
-        $kelurahan -> id = $request->id;
         $kelurahan ->save();
         return redirect()->route('kelurahan.index');
     }

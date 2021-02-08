@@ -15,13 +15,10 @@ class CreateRwsTable extends Migration
     {
         Schema::create('rws', function (Blueprint $table) {
             $table->id();
-            $table->char('id_kel');
+            $table->foreignId('id_kel')->constrained('kelurahans')->onUpdate('cascade')->onDelete('cascade');
             $table->string('no_rw', 3);
             $table->timestamps();
-            $table->foreign('id_kel')
-                ->references('id')
-                ->on('kelurahans')
-                ->onUpdate('cascade')->onDelete('cascade');
+            
         });
     }
 
