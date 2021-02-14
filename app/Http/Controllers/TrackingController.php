@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tracking;
+use App\Models\Provinsi;
 use App\Models\Rw;
 use Illuminate\Http\Request;
 
@@ -72,9 +73,31 @@ class TrackingController extends Controller
      * @param  \App\Models\Tracking  $tracking
      * @return \Illuminate\Http\Response
      */
-    public function show(Tracking $tracking)
+    public function show()
     {
-        //
+        $positif = tracking::sum('positif');
+        $sembuh  = tracking::sum('sembuh');
+        $meninggal  = tracking::sum('meninggal');
+        $provinsi = Provinsi::all();
+        $datapro=[];
+        $p=0;
+        foreach ($provinsi as $prov) {
+            $datapro[$p]['nama_prov']=$prov->nama_prov;
+            $datapro[$p]['positif'] =0;
+            $datapro[$p]['sembuh']=0;
+            $datapro[$p]['meninggal']=0;
+            $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
+            foreach ($tracking as $track) {
+                if ($track->rw->kelurahan->kecamatan->kota->provinsi->nama_prov == $prov->nama_prov) {
+                        $datapro[$p]['positif'] += $track->positif;
+                        $datapro[$p]['sembuh']  += $track->sembuh;
+                        $datapro[$p]['meninggal'] += $track->meninggal;                   
+                }
+            }
+            $p++;
+        }
+
+        return view('wrap.index',compact('positif','sembuh','meninggal','datapro'));
     }
 
     /**

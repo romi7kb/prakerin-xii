@@ -32,9 +32,7 @@ Route::group(['prefix'=> 'admin', 'middleware'=> ['auth']], function ()
     Route::resource('rw', RwController::class);
     Route::resource('tracking', TrackingController::class);
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[TrackingController::class,'show']);
 
 Auth::routes();
 
