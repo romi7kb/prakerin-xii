@@ -6,6 +6,8 @@ use App\Models\Tracking;
 use App\Models\Provinsi;
 use App\Models\Rw;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class TrackingController extends Controller
 {
@@ -96,8 +98,11 @@ class TrackingController extends Controller
             }
             $p++;
         }
-
-        return view('wrap.index',compact('positif','sembuh','meninggal','datapro'));
+        $client = new Client(); //GuzzleHttp\Client
+        $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
+        $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());
+        $tomeninggal = json_decode($client->request('GET', 'https://api.kawalcorona.com/meninggal')->getBody());
+        return view('wrap.index',compact('positif','sembuh','meninggal','datapro','topositif','tosembuh','tomeninggal'));
     }
 
     /**
