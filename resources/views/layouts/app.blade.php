@@ -64,7 +64,19 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tabled').DataTable({
-                "scrollY": "200px",
+                "scrollY": "400px",
+                "scrollCollapse": true,
+                "paging": false,
+                "searching": false,
+                "info": false,
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tabled2').DataTable({
+                "scrollY": "400px",
                 "scrollCollapse": true,
                 "paging": false,
                 "searching": false,

@@ -7,6 +7,14 @@
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
+                    @if ($tanda = Session::get('tanda') )
+                        @php $message = Session::get('message');
+                        @endphp
+                            <div class="alert alert-{{$tanda}} alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <h4 class="page-title">Kelurahan</h4>
                     </div>
                     <div class="col-7 align-self-center">

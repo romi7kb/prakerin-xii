@@ -660,38 +660,26 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-  padding-bottom: 30px;
+  padding-bottom: 0px;
 }
 
 .counts .count-box {
+  padding: 30px;
   width: 100%;
 }
 
-.counts .count-box i {
+.counts .count-box img {
   display: block;
-  font-size: 44px;
+  width: 44px;
+  height: 44px;
   color: #67b0d1;
   float: left;
   line-height: 0;
 }
-.counts .count-box i.indo {
-  display: block;
-  font-size: 33px;
-  color: #67b0d1;
-  float: left;
-  line-height: 0;
-}
+
 
 .counts .count-box span {
-  font-size: 34px;
-  line-height: 40px;
-  display: block;
-  font-weight: 700;
-  color: #2f4d5a;
-  margin-left: 60px;
-}
-.counts .count-box span.indo {
-  font-size: 28px;
+  font-size: 48px;
   line-height: 40px;
   display: block;
   font-weight: 700;
@@ -699,18 +687,12 @@ section {
   margin-left: 60px;
 }
 
+
 .counts .count-box p {
-  padding: 15px 0 0 0;
+  padding: 15px 0 10px 0;
   margin: 0 0 0 60px;
   font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  color: #49788c;
-}
-.counts .count-box p.indo {
-  padding: 15px 0 0 0;
-  margin: 0 0 0 0px;
-  font-family: "Raleway", sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   color: #49788c;
 }
 

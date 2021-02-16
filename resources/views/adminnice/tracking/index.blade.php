@@ -36,6 +36,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                            @if ($tanda = Session::get('tanda') )
+                            @php $message = Session::get('message');
+                            @endphp
+                                <div class="alert alert-{{$tanda}} alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>	
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
                                 <h4 class="card-title">Kasus <a class="btn btn-primary btn-sm btn-rounded" href="{{route('tracking.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
                             <div class="table-responsive">

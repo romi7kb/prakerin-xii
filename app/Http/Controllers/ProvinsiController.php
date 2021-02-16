@@ -53,7 +53,7 @@ class ProvinsiController extends Controller
         $provinsi -> kode_prov = $request->kode_prov;
         $provinsi -> nama_prov = $request->nama_prov;
         $provinsi ->save();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['tanda'=>'success','message'=>'provinsi berhasil ditambahkan!']);
     }
 
     /**
@@ -98,7 +98,7 @@ class ProvinsiController extends Controller
         $provinsi -> kode_prov = $request->kode_prov;
         $provinsi -> nama_prov = $request->nama_prov;
         $provinsi ->save();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['tanda'=>'warning','message'=>'provinsi berhasil diubah!']);
     }
 
     /**
@@ -110,6 +110,6 @@ class ProvinsiController extends Controller
     public function destroy(Provinsi $provinsi)
     {
         $provinsi->delete();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['tanda'=>'danger','message'=>'provinsi berhasil dihapus!']);
     }
 }

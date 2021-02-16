@@ -54,7 +54,7 @@ class RwController extends Controller
         $rw -> id_kel = $request->id_kel;
         $rw -> no_rw = $request->no_rw;
         $rw ->save();
-        return redirect()->route('rw.index');
+        return redirect()->route('rw.index')->with(['tanda'=>'success','message'=>'Rw berhasil dibuat!']);
     }
 
     /**
@@ -100,7 +100,7 @@ class RwController extends Controller
         $rw -> id_kel = $request->id_kel;
         $rw -> no_rw = $request->no_rw;
         $rw ->save();
-        return redirect()->route('rw.index');
+        return redirect()->route('rw.index')->with(['tanda'=>'warning','message'=>'Rw berhasil diubah!']);
     }
 
     /**
@@ -113,6 +113,6 @@ class RwController extends Controller
     {
         $rw = Rw::findOrFail($id);
         $rw->delete();
-        return redirect()->route('rw.index');
+        return redirect()->route('rw.index')->with(['tanda'=>'danger','message'=>'Rw berhasil dihapus!']);
     }
 }

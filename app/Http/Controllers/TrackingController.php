@@ -66,7 +66,7 @@ class TrackingController extends Controller
         $tracking -> meninggal = $request->meninggal;
         $tracking -> tgl = $request->tgl;
         $tracking ->save();
-        return redirect()->route('tracking.index');
+        return redirect()->route('tracking.index')->with(['tanda'=>'success','message'=>'data berhasil ditambahkan!']);
     }
 
     /**
@@ -102,7 +102,8 @@ class TrackingController extends Controller
         $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
         $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());
         $tomeninggal = json_decode($client->request('GET', 'https://api.kawalcorona.com/meninggal')->getBody());
-        return view('wrap.index',compact('positif','sembuh','meninggal','datapro','topositif','tosembuh','tomeninggal'));
+        $global = json_decode($client->request('GET', 'https://api.kawalcorona.com/')->getBody());
+        return view('wrap.index',compact('positif','sembuh','meninggal','datapro','topositif','tosembuh','tomeninggal','global'));
     }
 
     /**
@@ -142,7 +143,7 @@ class TrackingController extends Controller
         $tracking -> meninggal = $request->meninggal;
         $tracking -> tgl = $request->tgl;
         $tracking ->save();
-        return redirect()->route('tracking.index');
+        return redirect()->route('tracking.index')->with(['tanda'=>'warning','message'=>'data berhasil diubah!']);
     }
 
     /**
@@ -155,6 +156,6 @@ class TrackingController extends Controller
     {
         $tracking = Tracking::findOrFail($id);
         $tracking->delete();
-        return redirect()->route('tracking.index');
+        return redirect()->route('tracking.index')->with(['tanda'=>'danger','message'=>'data berhasil dihapus!']);
     }
 }

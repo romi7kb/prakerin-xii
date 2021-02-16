@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container d-flex align-items-center justify-content-between">
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -54,6 +55,7 @@
                 </div>
             </div>
         </nav>
+        </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 text-center">
@@ -63,7 +65,6 @@
     </div>    
 <div class="container">
     <div class="row ">
-        <div class="col-md-12">
             
                     <form method="POST" class="row" action="{{ route('login') }}">
                         @csrf
@@ -111,16 +112,15 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                <!-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif -->
                         </div>
                     </form>
             
             
-        </div>
     </div>
 </div>
 @endsection

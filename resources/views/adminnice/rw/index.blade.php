@@ -35,8 +35,18 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
+                     
                         <div class="card">
                         <div class="card-body">
+                            
+                        @if ($tanda = Session::get('tanda') )
+                        @php $message = Session::get('message');
+                        @endphp
+                            <div class="alert alert-{{$tanda}} alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                                 <h4 class="card-title">Daftar rw <a class="btn btn-primary btn-sm btn-rounded" href="{{route('rw.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
                             <div class="table-responsive">
@@ -63,7 +73,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn btn-warning btn-sm btn-rounded " href="{{route('rw.edit',$data->id)}}"> <i class="mdi mdi-pencil"></i></a>
-                                            <button type="submit" class="btn btn-danger btn-sm btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                            <button type="submit" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-danger btn-sm btn-rounded"><i class="mdi mdi-delete"></i></button>
                                             </form>
                                             </td>
                                         </tr>

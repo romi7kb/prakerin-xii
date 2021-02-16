@@ -60,7 +60,7 @@ class KotaController extends Controller
         $kota -> kode_kot = $request->kode_kot;
         $kota -> nama_kot = $request->nama_kot;
         $kota ->save();
-        return redirect()->route('kota.index');
+        return redirect()->route('kota.index')->with(['tanda'=>'success','message'=>'kota berhasil ditambahkan!']);
     }
 
     /**
@@ -108,7 +108,7 @@ class KotaController extends Controller
         $kota -> kode_kot = $request->kode_kot;
         $kota -> nama_kot = $request->nama_kot;
         $kota ->save();
-        return redirect()->route('kota.index');
+        return redirect()->route('kota.index')->with(['tanda'=>'warning','message'=>'kota berhasil diubah!']);
     }
 
     /**
@@ -121,6 +121,6 @@ class KotaController extends Controller
     {
         $kota = Kota::findOrFail($id);
         $kota->delete();
-        return redirect()->route('kota.index');
+        return redirect()->route('kota.index')->with(['tanda'=>'danger','message'=>'kota berhasil dihapus!']);
     }
 }
