@@ -8,6 +8,7 @@ use App\Models\Rw;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use DB;
 
 class TrackingController extends Controller
 {
@@ -80,24 +81,19 @@ class TrackingController extends Controller
         $positif = tracking::sum('positif');
         $sembuh  = tracking::sum('sembuh');
         $meninggal  = tracking::sum('meninggal');
-        $provinsi = Provinsi::all();
-        $datapro=[];
-        $p=0;
-        foreach ($provinsi as $prov) {
-            $datapro[$p]['nama_prov']=$prov->nama_prov;
-            $datapro[$p]['positif'] =0;
-            $datapro[$p]['sembuh']=0;
-            $datapro[$p]['meninggal']=0;
-            $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
-            foreach ($tracking as $track) {
-                if ($track->rw->kelurahan->kecamatan->kota->provinsi->nama_prov == $prov->nama_prov) {
-                        $datapro[$p]['positif'] += $track->positif;
-                        $datapro[$p]['sembuh']  += $track->sembuh;
-                        $datapro[$p]['meninggal'] += $track->meninggal;                   
-                }
-            }
-            $p++;
-        }
+        $datapro = DB::table('provinsis')
+                ->join('kotas', 'kotas.id_prov', '=', 'provinsis.id')
+                ->join('kecamatans', 'kecamatans.id_kot', '=', 'kotas.id')
+                ->join('kelurahans', 'kelurahans.id_kec', '=', 'kecamatans.id')
+                ->join('rws', 'rws.id_kel', '=', 'kelurahans.id')
+                ->join('trackings', 'trackings.id_rw', 'rws.id')
+                ->select('kode_prov','nama_prov',
+                    DB::raw('sum(trackings.positif) as positif'),
+                    DB::raw('sum(trackings.sembuh) as sembuh'),
+                    DB::raw('sum(trackings.meninggal) as meninggal'),
+                )
+                ->groupBy('nama_prov','kode_prov')
+                ->get();
         $client = new Client(); //GuzzleHttp\Client
         $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
         $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());

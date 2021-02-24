@@ -6,7 +6,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href=""><span>Tracking Covid</span></a></h1>
+                <h1 class="text-light"><a href=""><span>COOVI69</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -25,7 +25,7 @@
     </header><!-- End Header -->
     <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <h1>Tracking Covid</h1>
+      <h1>COOVI69</h1>
       <h2>Coronavirus Global & Indonesia Live Data</h2>
       <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
@@ -164,10 +164,10 @@
                                     @foreach ($datapro as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data['nama_prov'] }}</td>
-                                            <td class="table-danger">{{ $data['positif'] }}</td>
-                                            <td class="table-warning">{{ $data['sembuh'] }}</td>
-                                            <td class="table-secondary">{{ $data['meninggal'] }}</td>
+                                            <td>{{ $data->nama_prov }}</td>
+                                            <td class="table-danger">{{ $data->positif }}</td>
+                                            <td class="table-warning">{{ $data->sembuh }}</td>
+                                            <td class="table-secondary">{{ $data->meninggal}}</td>
 
                                         </tr>
                                     @endforeach
@@ -195,13 +195,13 @@
     <footer id="footer">
             <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Tracking Covid</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>COOVI69</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Tracking Covid-free-bootstrap-template-creative/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/COOVI69-free-bootstrap-template-creative/ -->
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
