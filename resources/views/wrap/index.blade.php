@@ -30,15 +30,9 @@
       <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
   </section><!-- End Hero -->
-    <main id="main" class="page" >
-        <div class="hero-container" data-aos="fade-up">
-            <h1>Tracking Covid</h1>
-            <h2>Coronavirus Global & Indonesia Live Data</h2>
-            <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
-        </div>
+    
     </section><!-- End Hero -->
     <main id="main" class="page">
->>>>>>> 4159aed9721cc4e59b23be82eb0dab46a0fcb347
         <!-- ======= Counts Section ======= -->
         <section id="counts" class="counts section-bg">
             <div class="container align-items-center">
