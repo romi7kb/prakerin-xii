@@ -6,14 +6,14 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href=""><span>COOVI-69</span></a></h1>
+                <h1 class="text-light"><a href=""><span>COOVI69</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Homes</a></li>
                     <li><a class="nav-link scrollto" href="#counts">Global</a></li>
                     <li><a class="nav-link scrollto" href="#indo">Indonesia</a></li>
 
