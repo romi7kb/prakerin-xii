@@ -24,7 +24,6 @@
         </div>
     </header><!-- End Header -->
     <section id="hero">
-<<<<<<< HEAD
     <div class="hero-container" data-aos="fade-up">
       <h1>COOVI-69</h1>
       <h2>Coronavirus Global & Indonesia Live Data</h2>
@@ -32,7 +31,6 @@
     </div>
   </section><!-- End Hero -->
     <main id="main" class="page" >
-=======
         <div class="hero-container" data-aos="fade-up">
             <h1>Tracking Covid</h1>
             <h2>Coronavirus Global & Indonesia Live Data</h2>
