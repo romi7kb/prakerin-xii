@@ -25,7 +25,7 @@
     </header><!-- End Header -->
     <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <h1>COOVI-69</h1>
+      <h1>COOVI69</h1>
       <h2>Coronavirus Global & Indonesia Live Data</h2>
       <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
