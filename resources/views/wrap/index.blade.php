@@ -24,13 +24,13 @@
         </div>
     </header><!-- End Header -->
     <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <h1>Tracking Covid</h1>
-      <h2>Coronavirus Global & Indonesia Live Data</h2>
-      <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
-    </div>
-  </section><!-- End Hero -->
-    <main id="main" class="page" >
+        <div class="hero-container" data-aos="fade-up">
+            <h1>Tracking Covid</h1>
+            <h2>Coronavirus Global & Indonesia Live Data</h2>
+            <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+        </div>
+    </section><!-- End Hero -->
+    <main id="main" class="page">
         <!-- ======= Counts Section ======= -->
         <section id="counts" class="counts section-bg">
             <div class="container align-items-center">
@@ -42,7 +42,7 @@
                         <div class="count-box ">
                             <p><strong>Total Positif</strong> </p>
                             <img src="{{ asset('assets/img/icon-positif.png') }}" alt="">
-                            <span >{{ $topositif->value }}</span>
+                            <span>{{ $topositif->value }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <div class="count-box ">
                             <p><strong>Total Sembuh</strong> </p>
                             <img src="{{ asset('assets/img/icon-pdp.png') }}" alt="">
-                            <span >{{ $tosembuh->value }}</span>
+                            <span>{{ $tosembuh->value }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -60,21 +60,21 @@
                         <div class="count-box  ">
                             <p><strong>Total Meninggal</strong></p>
                             <img src="{{ asset('assets/img/icon-odp.png') }}" alt="">
-                            <span >{{ $tomeninggal->value }}</span>
+                            <span>{{ $tomeninggal->value }}</span>
                             <p><strong>orang</strong></p>
                         </div>
                     </div>
                 </div>
-                
+
 
             </div>
         </section><!-- End Counts Section -->
         <section>
             <div class="container">
-            <div class="row bg-white">
+                <div class="row bg-white">
                     <div class="col-md-12">
                         <div class="table-responsive ">
-                            
+
                             <table class="table table-striped table-bordered align-middle" id="tabled2">
                                 <thead class="table-dark">
                                     <tr>
@@ -107,8 +107,8 @@
                 </div>
             </div>
         </section>
-        <section  id="indo" class="counts section-bg">
-            <div class="container " >
+        <section id="indo" class="counts section-bg">
+            <div class="container ">
                 <div class="section-title">
                     <h2>Indonesia</h2>
                 </div>
@@ -117,7 +117,7 @@
                         <div class="count-box ">
                             <p><strong>Total Positif</strong> </p>
                             <img src="{{ asset('assets/img/icon-positif.png') }}" alt="">
-                            <span >{{ $positif }}</span>
+                            <span>{{ $positif }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         <div class="count-box ">
                             <p><strong>Total Sembuh</strong> </p>
                             <img src="{{ asset('assets/img/icon-pdp.png') }}" alt="">
-                            <span >{{ $sembuh }}</span>
+                            <span>{{ $sembuh }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         <div class="count-box  ">
                             <p><strong>Total Meninggal</strong></p>
                             <img src="{{ asset('assets/img/icon-odp.png') }}" alt="">
-                            <span >{{ $meninggal }}</span>
+                            <span>{{ $meninggal }}</span>
                             <p><strong>orang</strong></p>
                         </div>
                     </div>
@@ -164,10 +164,10 @@
                                     @foreach ($datapro as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data['nama_prov'] }}</td>
-                                            <td class="table-danger">{{ $data['positif'] }}</td>
-                                            <td class="table-warning">{{ $data['sembuh'] }}</td>
-                                            <td class="table-secondary">{{ $data['meninggal'] }}</td>
+                                            <td>{{ $data->nama_prov }}</td>
+                                            <td class="table-danger">{{ $data->positif }}</td>
+                                            <td class="table-warning">{{ $data->sembuh }}</td>
+                                            <td class="table-secondary">{{ $data->meninggal }}</td>
 
                                         </tr>
                                     @endforeach
@@ -193,7 +193,7 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
-            <div class="container">
+        <div class="container">
             <div class="copyright">
                 &copy; Copyright <strong><span>Tracking Covid</span></strong>. All Rights Reserved
             </div>
