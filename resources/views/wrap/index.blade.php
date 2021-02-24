@@ -13,7 +13,7 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Homes</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#counts">Global</a></li>
                     <li><a class="nav-link scrollto" href="#indo">Indonesia</a></li>
 
