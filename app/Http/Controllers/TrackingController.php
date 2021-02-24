@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use DB;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4159aed9721cc4e59b23be82eb0dab46a0fcb347
 class TrackingController extends Controller
 {
     /**
@@ -81,6 +84,10 @@ class TrackingController extends Controller
         $positif = tracking::sum('positif');
         $sembuh  = tracking::sum('sembuh');
         $meninggal  = tracking::sum('meninggal');
+<<<<<<< HEAD
+=======
+        $provinsi = Provinsi::all();
+>>>>>>> 4159aed9721cc4e59b23be82eb0dab46a0fcb347
         $datapro = DB::table('provinsis')
                 ->join('kotas', 'kotas.id_prov', '=', 'provinsis.id')
                 ->join('kecamatans', 'kecamatans.id_kot', '=', 'kotas.id')

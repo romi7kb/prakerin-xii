@@ -17,8 +17,6 @@ class TrackingData extends Component
     public $kecamatan;
     public $kelurahan;
     public $rw;
-    public $tracking1;
-    public $idt;
 
     public $selectedProvinsi = null;
     public $selectedKota = null;
@@ -26,7 +24,7 @@ class TrackingData extends Component
     public $selectedKelurahan = null;
     public $selectedRw = null;
 
-    public function mount($selectedRw = null, $idt = null)
+    public function mount($selectedRw = null)
     {
         $this->provinsi = Provinsi::all();
         $this->kota = collect();
@@ -34,10 +32,6 @@ class TrackingData extends Component
         $this->kelurahan = collect();
         $this->rw = collect();
         $this->selectedRw = $selectedRw;
-        $this->idt = $idt;
-        if (!is_null($idt)) {
-            $this->tracking1 = Tracking::findOrFail($idt);
-        }
         if (!is_null(old('id_rw'))) {
             $this->selectedRw = old('id_rw');
 
