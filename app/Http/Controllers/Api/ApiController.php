@@ -380,7 +380,9 @@ class ApiController extends Controller
     }
     public function positif()
     {
-        $positif = tracking::sum('positif');
+        $client = new Client(); //GuzzleHttp\Client
+        $url = 'https://api.kawalcorona.com/positif';
+        $positif = json_decode($client->request('GET', $url)->getBody());
         $response= [
             'success' => true,
             'data' => ['name'=> 'Total Positif',
