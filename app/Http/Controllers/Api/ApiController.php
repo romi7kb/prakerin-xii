@@ -367,8 +367,7 @@ class ApiController extends Controller
         $positif = json_decode($client->request('GET', $url)->getBody());
         $response= [
             'success' => true,
-            'data' => ['name'=> 'Total Positif',
-                         'value' => $positif
+            'data' => [$positif
         ],
             'message' => 'berhasil',
         ];
