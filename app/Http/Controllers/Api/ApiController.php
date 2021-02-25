@@ -20,37 +20,19 @@ class ApiController extends Controller
     public function provinsi()
     {
         $provinsi = Provinsi::all();
-        $data=[];
-        $p=0;
-        foreach ($provinsi as $prov) {
-            $data[$p]['Kode Provinsi']=$prov->kode_prov;
-            $data[$p]['Nama Provinsi']=$prov->nama_prov;
-            $data[$p]['hari ini']['positif'] =0;
-            $data[$p]['hari ini']['sembuh']=0;
-            $data[$p]['hari ini']['meninggal']=0;
-            $data[$p]['total']['positif'] =0;
-            $data[$p]['total']['sembuh']=0;
-            $data[$p]['total']['meninggal']=0;
-            $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
-            foreach ($tracking as $track) {
-                if ($track->rw->kelurahan->kecamatan->kota->provinsi->nama_prov == $prov->nama_prov) {
-                    if ($track->tgl == date('Y-m-d')) {
-                        $data[$p]['hari ini']['positif'] += $track->positif;
-                        $data[$p]['hari ini']['sembuh']  += $track->sembuh;
-                        $data[$p]['hari ini']['meninggal'] += $track->meninggal;
-                        $data[$p]['total']['positif'] += $track->positif;
-                        $data[$p]['total']['sembuh']  += $track->sembuh;
-                        $data[$p]['total']['meninggal'] += $track->meninggal;
-                    }else {
-                        $data[$p]['total']['positif'] += $track->positif;
-                        $data[$p]['total']['sembuh']  += $track->sembuh;
-                        $data[$p]['total']['meninggal'] += $track->meninggal;
-                    }
-                   
-                }
-            }
-            $p++;
-        }
+        $data = DB::table('provinsis')
+        ->join('kotas', 'kotas.id_prov', '=', 'provinsis.id')
+        ->join('kecamatans', 'kecamatans.id_kot', '=', 'kotas.id')
+        ->join('kelurahans', 'kelurahans.id_kec', '=', 'kecamatans.id')
+        ->join('rws', 'rws.id_kel', '=', 'kelurahans.id')
+        ->join('trackings', 'trackings.id_rw', 'rws.id')
+        ->select('kode_prov','nama_prov',
+            DB::raw('sum(trackings.positif) as positif'),
+            DB::raw('sum(trackings.sembuh) as sembuh'),
+            DB::raw('sum(trackings.meninggal) as meninggal'),
+        )
+        ->groupBy('nama_prov','kode_prov')
+        ->get();
         $response= [
             'success' => true,
             'data' => $data,
