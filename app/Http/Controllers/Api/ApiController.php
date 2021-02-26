@@ -349,7 +349,7 @@ class ApiController extends Controller
         $meninggal  = tracking::sum('meninggal');
         $response= [
             'success' => true,
-            'data' => ['Indonesia'=>
+            'data' => [
                         [
                             'Total positif'=>$positif,
                             'Total sembuh'=>$sembuh,
@@ -366,36 +366,40 @@ class ApiController extends Controller
         $url = 'https://api.kawalcorona.com/positif';
         $positif = json_decode($client->request('GET', $url)->getBody());
         $response= [
-            'success' => true,
+            'status' => 200,
             'data' => [$positif
         ],
             'message' => 'berhasil',
         ];
-        return response()->json($response);
+        return response()->json($response,200);
     }
     public function sembuh()
     {
         
-        $sembuh  = tracking::sum('sembuh');
+        $client = new Client(); //GuzzleHttp\Client
+        $url = 'https://api.kawalcorona.com/sembuh';
+        $sembuh = json_decode($client->request('GET', $url)->getBody());
         $response= [
-            'success' => true,
-            'data' => ['name'=> 'Total Sembuh',
-                        'value' => $sembuh
+            'status' => 200,
+            'data' => [$sembuh
         ],
             'message' => 'berhasil',
         ];
-        return response()->json($response);
+        return response()->json($response,200);
+    
     }
     public function meninggal()
     {
-        $meninggal  = tracking::sum('meninggal');
+        $client = new Client(); //GuzzleHttp\Client
+        $url = 'https://api.kawalcorona.com/meninggal';
+        $meninggal = json_decode($client->request('GET', $url)->getBody());
         $response= [
-            'success' => true,
-            'data' => ['name'=> 'Total Meninggal',
-                        'value' => $meninggal
-                        ],
+            'status' => 200,
+            'data' => [$meninggal
+        ],
             'message' => 'berhasil',
         ];
-        return response()->json($response);
+        return response()->json($response,200);
+    
     }
 }
