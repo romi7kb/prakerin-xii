@@ -351,9 +351,10 @@ class ApiController extends Controller
             'success' => true,
             'data' => [
                         [
-                            'Total positif'=>$positif,
-                            'Total sembuh'=>$sembuh,
-                            'Total meninggal'=>$meninggal,
+                            "nama" => "Indonesia",
+                            'positif'=>$positif,
+                            'sembuh'=>$sembuh,
+                            'meninggal'=>$meninggal,
                         ],
         ],
             'message' => 'berhasil',
