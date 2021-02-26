@@ -351,7 +351,7 @@ class ApiController extends Controller
             'success' => true,
             'data' => [
                         [
-                            "nama" => "Indonesia",
+                            "name" => "Indonesia",
                             'positif'=>$positif,
                             'sembuh'=>$sembuh,
                             'meninggal'=>$meninggal,
