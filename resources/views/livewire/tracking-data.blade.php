@@ -2,7 +2,7 @@
     <div class="form-group row ">
         <div class="col-md-12">
             <label for="provinsi">Provinsi</label>
-            <select wire:model="selectedProvinsi" class="form-control ">
+            <select wire:model="selectedProvinsi" class="form-control " required>
                 <option value="" selected>pilih provinsi</option>
                 @foreach ($provinsi as $provinsis)
                     <option value="{{ $provinsis->id }}">{{ $provinsis->nama_prov }}</option>

@@ -348,7 +348,7 @@ class ApiController extends Controller
         $sembuh  = tracking::sum('sembuh');
         $meninggal  = tracking::sum('meninggal');
         $response= [
-            'success' => true,
+            'status' => 200,
             'data' => [
                         [
                             "name" => "Indonesia",
@@ -359,7 +359,7 @@ class ApiController extends Controller
         ],
             'message' => 'berhasil',
         ];
-        return response()->json($response);
+        return response()->json($response,200);
     }
     public function positif()
     {
