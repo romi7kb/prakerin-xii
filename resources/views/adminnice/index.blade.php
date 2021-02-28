@@ -29,16 +29,21 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             
-            <div class="container">
+            <div class="container-fluid">
     <div class="row ">
     
-        <div class="col-md-8 ">
-                    @if (session('status'))
+        <div class="col-md-12 ">
+                   <div class="card">
+                   <div class="card-body">
+                   @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h2 >{{ __('You are logged in!') }}</h2>
+                    <h4  class="card-title">{{ __('You are logged in!') }}</h4>
+                   </div>
+                    
+                   </div>
 
                     
         </div>

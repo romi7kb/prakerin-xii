@@ -33,6 +33,10 @@ Route::group(['prefix'=> 'admin', 'middleware'=> ['auth']], function ()
     Route::resource('tracking', TrackingController::class);
 });
 Route::get('/',[TrackingController::class,'show']);
+Route::get('/kota/{id}',[TrackingController::class,'showKot']);
+Route::get('/kecamatan/{id}',[TrackingController::class,'showKec']);
+Route::get('/kelurahan/{id}',[TrackingController::class,'showKel']);
+Route::get('/rw/{id}',[TrackingController::class,'showRW']);
 
-Auth::routes();
+Auth::routes(['register' => false,]);
 

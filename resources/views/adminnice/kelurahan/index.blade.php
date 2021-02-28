@@ -7,14 +7,7 @@
 <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                    @if ($tanda = Session::get('tanda') )
-                        @php $message = Session::get('message');
-                        @endphp
-                            <div class="alert alert-{{$tanda}} alert-block">
-                                <button type="button" class="close" data-dismiss="alert">×</button>	
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @endif
+                   
                         <h4 class="page-title">Kelurahan</h4>
                     </div>
                     <div class="col-7 align-self-center">
@@ -47,6 +40,14 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-body">
+                        @if ($tanda = Session::get('tanda') )
+                        @php $message = Session::get('message');
+                        @endphp
+                            <div class="alert alert-{{$tanda}} alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                                 <h4 class="card-title">Daftar Kelurahan <a class="btn btn-primary btn-sm btn-rounded" href="{{route('kelurahan.create')}}"><i class="mdi mdi-plus"></i></a></h4>
                                 
                             <div class="table-responsive">

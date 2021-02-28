@@ -42,29 +42,25 @@
                             <form action="{{route('kelurahan.update', $kelurahan->id)}}" class="form-horizontal m-t-30" method="post">
                             @csrf
                             @method('put')
-                            <div class="form-group">
-                                <label>Nama kelurahan</label>
-                                <input type="text" class="form-control  @error('nama_kel') is-invalid @enderror" name="nama_kel" value="{{$kelurahan->nama_kel}}" >
-                                @error('nama_kel')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                    <label>Kecamatan</label>
-                                    <select class="custom-select col-12 select2  @error('id_kec') is-invalid @enderror" id="inlineFormCustomSelect" name="id_kec">
-                                    <option value="">pilih...</option>
-                                        @foreach($kecamatan as $data)
-                                        <option 
-                                        @if($kelurahan->id_kec==$data->id)
-                                        selected
-                                        @endif
-                                        value="{{$data->id}}">{{$data->nama_kec}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('id_kec')
-                                    <div class="alert alert-danger">{{$message}}</div>
-                                    @enderror
+                            <div class="row">
+                            <div class="col-md-6">
+                                    @livewire('drop-kelurahan',['selectedKelurahan' => $kelurahan->id])
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Nama Kelurahan</label>
+                                                <input type="text" class="form-control  @error('nama_kel') is-invalid @enderror" name="nama_kel"  value="{{$kelurahan->nama_kel}}">
+                                                @error('nama_kel')
+                                                <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Edit</button>
                             </div>

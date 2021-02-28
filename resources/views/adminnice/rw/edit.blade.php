@@ -42,23 +42,23 @@
                             <form action="{{route('rw.update', $rw->id)}}" class="form-horizontal m-t-30" method="post">
                             @csrf
                             @method('put')
-                            <div class="form-group">
-                                <label>No Rw</label>
-                                <input type="text" class="form-control" name="no_rw" value="{{$rw->no_rw}}" required>
-                            </div>
-                            <div class="form-group">
-                                    <label>Kelurahan</label>
-                                    <select class="custom-select col-12 select2" id="inlineFormCustomSelect" name="id_kel">
-                                    <option selected>pilih...</option>
-                                        @foreach($kelurahan as $data)
-                                        <option 
-                                        @if($rw->id_kel==$data->id)
-                                        selected
-                                        @endif
-                                        value="{{$data->id}}">{{$data->nama_kel}}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @livewire('drop-rw',['selectedRw' => $rw->id])
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>No Rw</label>
+                                                <input type="text" class="form-control" name="no_rw" value="{{$rw->no_rw}}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Edit</button>
                             </div>

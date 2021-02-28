@@ -41,29 +41,21 @@
                             <div class="card-body">
                             <form action="{{route('rw.store')}}" class="form-horizontal m-t-30" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label>No RW</label>
-                                <input type="text" class="form-control @error('no_rw') is-invalid @enderror" name="no_rw" value="{{old('no_rw')}}">
-                                @error('no_rw')
-                                <div class="alert alert-danger">{{$message}}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                    <label>Kelurahan</label>
-                                    <select class="custom-select col-12 select2 @error('id_kel') is-invalid @enderror" id="inlineFormCustomSelect" name="id_kel">
-                                        <option value="">pilih...</option>
-                                        @foreach($kelurahan as $data)
-                                        <option 
-                                        @if(old('id_kel')==$data->id))
-                                        selected 
-                                        @endif
-                                        value="{{$data->id}}">{{$data->nama_kel}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('id_kel')
-                                    <div class="alert alert-danger">{{$message}}</div>
-                                    @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @livewire('drop-rw')
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>No Rw</label>
+                                                <input type="text" class="form-control" name="no_rw" value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-info">Tambah</button>
                             </div>
