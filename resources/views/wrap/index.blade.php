@@ -107,7 +107,6 @@
                 </div>
             </div>
         </section>
-        @if(isset($global))
         <section id="counts" class="counts section-bg">
             <div class="container align-items-center">
                 <div class="section-title">
@@ -183,7 +182,7 @@
                 </div>
             </div>
         </section>
-        @endif
+    
 
 
 

@@ -100,11 +100,12 @@ class TrackingController extends Controller
                 ->groupBy('provinsis.id','kode_prov','nama_prov',)
                 ->get();
         $client = new Client(); //GuzzleHttp\Client
-        // $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
-        // $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());
-        // $tomeninggal = json_decode($client->request('GET', 'https://api.kawalcorona.com/meninggal')->getBody());
-        // $global = json_decode($client->request('GET', 'https://api.kawalcorona.com/')->getBody());
-        return view('wrap.index',compact('positif','sembuh','meninggal','datapro'));
+        
+        $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
+        $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());
+        $tomeninggal = json_decode($client->request('GET', 'https://api.kawalcorona.com/meninggal')->getBody());
+        $global = json_decode($client->request('GET', 'https://api.kawalcorona.com/')->getBody());
+        return view('wrap.index',compact('positif','sembuh','meninggal','datapro','topositif','tosembuh','tomeninggal','global'));
     }
     public function showKot($id)
     {
