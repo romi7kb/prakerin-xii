@@ -31,7 +31,6 @@
     </div>
   </section><!-- End Hero -->
     
-    </section><!-- End Hero -->
     <main id="main" class="page">
         <!-- ======= Counts Section ======= -->
        

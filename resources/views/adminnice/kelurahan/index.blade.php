@@ -74,7 +74,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn btn-warning btn-sm btn-rounded " href="{{route('kelurahan.edit',$data->id)}}"> <i class="mdi mdi-pencil"></i></a>
-                                            <button type="submit" class="btn btn-danger btn-sm btn-rounded"><i class="mdi mdi-delete"></i></button>
+                                            <button type="submit"  onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-danger btn-sm btn-rounded"><i class="mdi mdi-delete"></i></button>
                                             </form>
                                             </td>
                                         </tr>

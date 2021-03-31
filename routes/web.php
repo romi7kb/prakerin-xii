@@ -7,6 +7,7 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\TrackingController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,7 @@ use App\Http\Controllers\TrackingController;
 
 Route::group(['prefix'=> 'admin', 'middleware'=> ['auth']], function ()
 {
-    Route::get('/', function () {
-        return view('adminnice.index');
-    });
+    Route::get('/', [DashboardController::class,'show']);
     Route::resource('provinsi', ProvinsiController::class);
     Route::resource('kota', KotaController::class);
     Route::resource('kecamatan', KecamatanController::class);
