@@ -24,9 +24,9 @@ use App\Http\Controllers\DashboardController;
 Route::group(['prefix'=> 'admin', 'middleware'=> ['auth']], function ()
 {
     Route::get('/', [DashboardController::class,'show']);
-    Route::resource('provinsi', ProvinsiController::class);
-    Route::resource('kota', KotaController::class);
-    Route::resource('kecamatan', KecamatanController::class);
+    // Route::resource('provinsi', ProvinsiController::class);
+    // Route::resource('kota', KotaController::class);
+    // Route::resource('kecamatan', KecamatanController::class);
     Route::resource('kelurahan', KelurahanController::class);
     Route::resource('rw', RwController::class);
     Route::resource('tracking', TrackingController::class);

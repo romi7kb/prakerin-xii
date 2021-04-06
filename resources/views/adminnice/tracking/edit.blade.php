@@ -78,9 +78,10 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label for="tgl">Tanggal</label>
-                                            <input type="date" value="{{ $tracking->tgl }} "
+
+                                            <input type="date" value="{{ date('Y-m-d',strtotime($tracking->tgl))}}"
                                                 class="form-control   @error('tgl') is-invalid @enderror" name="tgl"
-                                                value="{{ old('tgl') }}">
+                                                value="{{ old('tgl') }}" readonly>
                                             @error('tgl')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror

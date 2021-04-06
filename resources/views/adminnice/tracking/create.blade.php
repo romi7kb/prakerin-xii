@@ -49,7 +49,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="positif">Jumlah Positif</label>
-                                            <input type="text" value=" "
+                                            <input type="number" value="{{old('positif')}}"
                                                 class="form-control  @error('positif') is-invalid @enderror" name="positif">
                                             @error('positif')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label for="sembuh">Jumlah Sembuh</label>
-                                            <input type="text" value=" "
+                                            <input type="number" value="{{old('sembuh')}}"
                                                 class="form-control   @error('sembuh') is-invalid @enderror" name="sembuh">
                                             @error('sembuh')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label for="meninggal">Jumlah Meninggal</label>
-                                            <input type="text" value=" "
+                                            <input type="text" value="{{old('meninggal')}}"
                                                 class="form-control   @error('meninggal') is-invalid @enderror"
                                                 name="meninggal">
                                             @error('meninggal')
@@ -74,16 +74,16 @@
                                             @enderror
 
                                         </div>
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <label for="tgl">Tanggal</label>
-                                            <input type="date" value=" "
+                                            <input type="date" value="{{old('tgl')}}"
                                                 class="form-control   @error('tgl') is-invalid @enderror" name="tgl"
-                                                value="{{ old('tgl') }}">
+                                                value="{{ old('tgl') }}" >
                                             @error('tgl')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
 
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

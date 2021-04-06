@@ -6,7 +6,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href=""><span>COOVI69</span></a></h1>
+                <h1 class="text-light"><a href=""><span>Track-19</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -25,7 +25,7 @@
     </header><!-- End Header -->
     <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <h1>COOVI69</h1>
+      <h1>Track-19</h1>
       <h2>Coronavirus Global & Indonesia Live Data</h2>
       <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
@@ -73,8 +73,8 @@
             <div class="container">
                 <div class="row bg-white">
                     <div class="col-md-12">
-                        <div class="table-responsive ">
-                            <table class="table table-striped  table-bordered align-middle " id="tabled">
+                        <div class="">
+                            <table class="table table-responsive table-striped  table-bordered align-middle " id="tabled">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -106,6 +106,7 @@
                 </div>
             </div>
         </section>
+        @if(isset($global))
         <section id="counts" class="counts section-bg">
             <div class="container align-items-center">
                 <div class="section-title">
@@ -147,9 +148,9 @@
             <div class="container">
                 <div class="row bg-white">
                     <div class="col-md-12">
-                        <div class="table-responsive ">
+                        <div class=" ">
 
-                            <table class="table table-striped table-bordered align-middle" id="tabled2">
+                            <table class="table table-responsive table-striped table-bordered align-middle" id="tabled2">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -181,7 +182,7 @@
                 </div>
             </div>
         </section>
-    
+        @endif
 
 
 
@@ -195,14 +196,14 @@
     <footer id="footer">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>COOVI-69</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Track-19</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/COOVI-69-free-bootstrap-template-creative/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="https://bootstrapmade.com/">Ketan</a>
             </div>
         </div>
     </footer><!-- End Footer -->

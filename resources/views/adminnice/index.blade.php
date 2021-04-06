@@ -69,7 +69,7 @@
                     <div class="col-md-12">
                         <div class="table-responsive ">
                             <table class="table table-striped  table-bordered align-middle " id="tabled">
-                                <thead class="table-dark">
+                                <thead class="">
                                     <tr>
                                         <th>#</th>
                                         <th>Nama Provinsi</th>

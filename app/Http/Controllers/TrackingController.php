@@ -25,8 +25,13 @@ class TrackingController extends Controller
         'id_rw.max'=>'rw tidak boleh lebih dari 2 karakter',
         'id_rw.unique'=>'data di rw ini sudah ada',
         'positif.required'=>'jumlah positif tidak boleh kosong',
+        'positif.min'=>'jumlah positif tidak boleh kurang dari 1',
         'sembuh.required'=>'jumlah sembuh tidak boleh kosong',
+        'sembuh.min'=>'jumlah sembuh tidak boleh kurang dari 1',
+        'sembuh.max'=>'jumlah sembuh tidak boleh melebihi jumlah positif',
         'meninggal.required'=>'jumlah meninggal tidak boleh kosong',
+        'meninggal.min'=>'jumlah meninggal tidak boleh kurang dari 1',
+        'meninggal.max'=>'jumlah meninggal tidak boleh melebihi jumlah positif dan sembuh',
         'tgl.required'=>'jumlah tanggal tidak boleh kosong',
     ];
     public function index()
@@ -54,12 +59,13 @@ class TrackingController extends Controller
      */
     public function store(Request $request)
     {
+        $p = (int)$request->positif;
+        $m = $request->positif-$request->sembuh;
         $rules = [
             'id_rw' => 'required|unique:trackings|max:2',
-            'positif'=>'required',
-            'sembuh'=>'required',
-            'meninggal'=>'required',
-            'tgl'=>'required',
+            'positif'=>'required|numeric|min:1',
+            'sembuh'=>"required|numeric|min:1|max:$p",
+            'meninggal'=>"required|numeric|min:1|max:$m",
         ];
        
         $this->validate($request,$rules,$this->messeges);
@@ -68,7 +74,7 @@ class TrackingController extends Controller
         $tracking -> positif = $request->positif;
         $tracking -> sembuh = $request->sembuh;
         $tracking -> meninggal = $request->meninggal;
-        $tracking -> tgl = $request->tgl;
+        $tracking -> tgl = date('Y-m-d');
         $tracking ->save();
         return redirect()->route('tracking.index')->with(['tanda'=>'success','message'=>'data berhasil ditambahkan!']);
     }
@@ -364,21 +370,21 @@ class TrackingController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $p = (int)$request->positif;
+        $m = $request->positif-$request->sembuh;
         $rules = [
             'id_rw' => 'required|max:2',
-            'positif'=>'required',
-            'sembuh'=>'required',
-            'meninggal'=>'required',
-            'tgl'=>'required',
-        ];
-       
+            'positif'=>'required|numeric|min:1',
+            'sembuh'=>"required|numeric|min:1|max:$p",
+            'meninggal'=>"required|numeric|min:1|max:$m",
+        ];       
         $this->validate($request,$rules,$this->messeges);
         $tracking = Tracking::findOrFail($id);
         $tracking -> id_rw = $request->id_rw;
         $tracking -> positif = $request->positif;
         $tracking -> sembuh = $request->sembuh;
         $tracking -> meninggal = $request->meninggal;
-        $tracking -> tgl = $request->tgl;
+        $tracking -> tgl = date('Y-m-d');
         $tracking ->save();
         return redirect()->route('tracking.index')->with(['tanda'=>'warning','message'=>'data berhasil diubah!']);
     }
