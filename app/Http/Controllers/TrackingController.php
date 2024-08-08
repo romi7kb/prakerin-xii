@@ -107,10 +107,10 @@ class TrackingController extends Controller
                 ->get();
         $client = new Client(); //GuzzleHttp\Client
         
-        $topositif = json_decode($client->request('GET', 'https://api.kawalcorona.com/positif')->getBody());
-        $tosembuh = json_decode($client->request('GET', 'https://api.kawalcorona.com/sembuh')->getBody());
-        $tomeninggal = json_decode($client->request('GET', 'https://api.kawalcorona.com/meninggal')->getBody());
-        $global = json_decode($client->request('GET', 'https://api.kawalcorona.com/')->getBody());
+        $topositif = json_decode(211312);
+        $tosembuh = json_decode(213);
+        $tomeninggal = json_decode(132);
+        $global = json_decode(12321);
         return view('wrap.index',compact('positif','sembuh','meninggal','datapro','topositif','tosembuh','tomeninggal','global'));
     }
     public function showKot($id)

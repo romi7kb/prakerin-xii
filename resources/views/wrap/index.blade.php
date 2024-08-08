@@ -44,7 +44,7 @@
                         <div class="count-box ">
                             <p><strong>Total Positif</strong> </p>
                             <img src="{{ asset('assets/img/icon-positif.png') }}" alt="">
-                            <span>{{ number_format($positif) }}</span>
+                            <span>{{ $positif }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="count-box ">
                             <p><strong>Total Sembuh</strong> </p>
                             <img src="{{ asset('assets/img/icon-pdp.png') }}" alt="">
-                            <span>{{ number_format($sembuh) }}</span>
+                            <span>{{ $sembuh }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="count-box  ">
                             <p><strong>Total Meninggal</strong></p>
                             <img src="{{ asset('assets/img/icon-odp.png') }}" alt="">
-                            <span>{{ number_format($meninggal) }}</span>
+                            <span>{{ $meninggal }}</span>
                             <p><strong>orang</strong></p>
                         </div>
                     </div>
@@ -92,9 +92,9 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td><a style="color:black;" href="/kota/{{$data->id}}">{{ $data->nama_prov }}</a></td>
-                                            <td class="table-danger">{{ number_format($data->positif) }}</td>
-                                            <td class="table-warning">{{ number_format($data->sembuh) }}</td>
-                                            <td class="table-secondary">{{ number_format($data->meninggal)}}</td>
+                                            <td class="table-danger">{{ $data->positif }}</td>
+                                            <td class="table-warning">{{ $data->sembuh }}</td>
+                                            <td class="table-secondary">{{ $data->meninggal}}</td>
 
                                         </tr>
                                     @endforeach
@@ -117,7 +117,7 @@
                         <div class="count-box ">
                             <p><strong>Total Positif</strong> </p>
                             <img src="{{ asset('assets/img/icon-positif.png') }}" alt="">
-                            <span>{{ $topositif->value }}</span>
+                            <span>{{ $topositif }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         <div class="count-box ">
                             <p><strong>Total Sembuh</strong> </p>
                             <img src="{{ asset('assets/img/icon-pdp.png') }}" alt="">
-                            <span>{{ $tosembuh->value }}</span>
+                            <span>{{ $tosembuh }}</span>
                             <p><strong>orang</strong> </p>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         <div class="count-box  ">
                             <p><strong>Total Meninggal</strong></p>
                             <img src="{{ asset('assets/img/icon-odp.png') }}" alt="">
-                            <span>{{ $tomeninggal->value }}</span>
+                            <span>{{ $tomeninggal }}</span>
                             <p><strong>orang</strong></p>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($global as $data)
+                                    {{-- @foreach ($global as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->attributes->Country_Region }}</td>
@@ -173,7 +173,7 @@
                                             <td class="table-secondary">{{ number_format($data->attributes->Deaths) }}</td>
 
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
 
                                 </tbody>
                             </table>
